@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CGM Style — Mobile Apps</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ivory:   #ede5d0;
+      --cream:   #e3d9c2;
+      --brown:   #3a3020;
+      --mid:     #6a6050;
+      --light:   #9a8e78;
+      --green:   #c6dad0;
+      --accent:  #8b6914;
+      --live:    #3a7d44;
+      --beta:    #7a5c14;
+      --dev:     #5a5a7a;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--ivory);
+      color: var(--brown);
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--cream);
+      border-bottom: 2px solid #d0c8b0;
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+    .logo-mark {
+      display: inline-block;
+      width: 56px; height: 56px;
+      background: var(--brown);
+      border-radius: 14px;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .logo-mark::before {
+      content: '▶';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--ivory);
+      font-size: 22px;
+    }
+    header h1 {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: var(--brown);
+    }
+    header p {
+      margin-top: 8px;
+      font-size: 14px;
+      color: var(--mid);
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Section ── */
+    section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+    section h2 {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 24px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #d0c8b0;
+    }
+
+    /* ── App Cards ── */
+    .apps { display: flex; flex-direction: column; gap: 20px; }
+
+    .card {
+      background: #fff;
+      border: 1px solid #d8d0bc;
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      box-shadow: 0 2px 8px rgba(58,48,32,0.06);
+      transition: box-shadow 0.2s;
+    }
+    .card:hover { box-shadow: 0 4px 16px rgba(58,48,32,0.12); }
+
+    .card-icon {
+      width: 60px; height: 60px;
+      border-radius: 14px;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px;
+    }
+    .icon-sound  { background: #f0e8d8; }
+    .icon-flip   { background: var(--green); }
+    .icon-answer { background: #d8e0f0; }
+
+    .card-body { flex: 1; }
+    .card-top {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+    .card-top h3 { font-size: 17px; font-weight: 800; }
+
+    .badge {
+      font-size: 10px; font-weight: 800;
+      letter-spacing: 0.8px; text-transform: uppercase;
+      padding: 3px 9px; border-radius: 20px;
+    }
+    .badge-live   { background: #d4edda; color: var(--live); }
+    .badge-beta   { background: #fff3cd; color: var(--beta); }
+    .badge-dev    { background: #e8e8f0; color: var(--dev); }
+
+    .card-version { font-size: 11px; color: var(--light); }
+    .card-desc { font-size: 13px; color: var(--mid); line-height: 1.6; margin-top: 4px; }
+
+    .card-actions { margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border-radius: 8px;
+      font-size: 12px; font-weight: 700;
+      text-decoration: none; letter-spacing: 0.3px;
+      transition: opacity 0.15s;
+    }
+    .btn:hover { opacity: 0.8; }
+    .btn-play {
+      background: var(--brown); color: var(--ivory);
+    }
+    .btn-disabled {
+      background: #e0d8c8; color: var(--light);
+      cursor: default; pointer-events: none;
+    }
+
+    /* ── Progress ── */
+    .progress-list { display: flex; flex-direction: column; gap: 16px; }
+
+    .progress-item { display: flex; flex-direction: column; gap: 6px; }
+    .progress-top {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .progress-top span { font-size: 13px; font-weight: 700; }
+    .progress-pct { font-size: 12px; color: var(--mid); }
+
+    .bar-bg {
+      height: 8px; background: #e0d8c8; border-radius: 99px; overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%; border-radius: 99px;
+      background: linear-gradient(90deg, var(--accent), #c8a030);
+    }
+    .bar-fill.green {
+      background: linear-gradient(90deg, #3a7d44, #5ab870);
+    }
+    .bar-fill.blue {
+      background: linear-gradient(90deg, var(--dev), #8888bb);
+    }
+
+    .progress-note {
+      font-size: 11px; color: var(--light); margin-top: 2px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--cream);
+      border-top: 1px solid #d0c8b0;
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 12px;
+      color: var(--light);
+      line-height: 1.8;
+    }
+    footer a { color: var(--mid); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 480px) {
+      .card { flex-direction: column; }
+      .card-icon { width: 48px; height: 48px; font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-mark"></div>
+  <h1>CGM STYLE</h1>
+  <p>Small apps, crafted with care.</p>
+</header>
+
+<!-- ── Apps ── -->
+<section>
+  <h2>Apps</h2>
+  <div class="apps">
+
+    <!-- app1: Sound Loop -->
+    <div class="card">
+      <div class="card-icon icon-sound">🔊</div>
+      <div class="card-body">
+        <div class="card-top">
+          <h3>Sound Loop</h3>
+          <span class="badge badge-live">Live</span>
+          <span class="card-version">v1.2.2</span>
+        </div>
+        <p class="card-desc">
+          다양한 환경음과 백색소음을 루프 재생하는 앱.<br>
+          집중, 수면, 휴식을 위한 사운드 컬렉션.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-play"
+             href="https://play.google.com/store/apps/details?id=com.soundloopapp"
+             target="_blank" rel="noopener">
+            ▶&nbsp; Google Play
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- app2: Sound Flip -->
+    <div class="card">
+      <div class="card-icon icon-flip">📼</div>
+      <div class="card-body">
+        <div class="card-top">
+          <h3>Sound Flip!</h3>
+          <span class="badge badge-beta">Beta</span>
+          <span class="card-version">v1.2.9</span>
+        </div>
+        <p class="card-desc">
+          카세트 테이프 UI로 목소리를 녹음하고 역재생.<br>
+          레트로 감성의 오디오 리버스 앱.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-disabled">출시 준비 중</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- app3: Answer AI -->
+    <div class="card">
+      <div class="card-icon icon-answer">🤖</div>
+      <div class="card-body">
+        <div class="card-top">
+          <h3>Answer AI</h3>
+          <span class="badge badge-dev">Dev</span>
+          <span class="card-version">v1.0.0</span>
+        </div>
+        <p class="card-desc">
+          AI 기반 질문-답변 앱. 개발 진행 중.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-disabled">개발 중</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Progress ── -->
+<section>
+  <h2>Progress</h2>
+  <div class="progress-list">
+
+    <div class="progress-item">
+      <div class="progress-top">
+        <span>Sound Loop</span>
+        <span class="progress-pct">100%</span>
+      </div>
+      <div class="bar-bg"><div class="bar-fill green" style="width:100%"></div></div>
+      <p class="progress-note">Google Play 출시 완료 · 운영 중</p>
+    </div>
+
+    <div class="progress-item">
+      <div class="progress-top">
+        <span>Sound Flip!</span>
+        <span class="progress-pct">80%</span>
+      </div>
+      <div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div>
+      <p class="progress-note">UI 완성 · 광고 연동 및 최종 QA 진행 중</p>
+    </div>
+
+    <div class="progress-item">
+      <div class="progress-top">
+        <span>Answer AI</span>
+        <span class="progress-pct">15%</span>
+      </div>
+      <div class="bar-bg"><div class="bar-fill blue" style="width:15%"></div></div>
+      <p class="progress-note">기획 및 초기 개발 단계</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 CGM Style · All rights reserved</p>
+  <p style="margin-top:6px">
+    <a href="mailto:rmsauddhkdwk@naver.com">rmsauddhkdwk@naver.com</a>
+  </p>
+</footer>
+
+</body>
+</html>
