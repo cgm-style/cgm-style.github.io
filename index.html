@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CGM Style — Mobile Apps</title>
+  <title>CGM Style — Apps</title>
+  <meta name="description" content="CGM Style이 만든 모바일 앱을 소개합니다. SelfieTalk에서 나만의 AI 친구와 대화하고 사진을 받아보세요." />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ivory:   #ede5d0;
-      --cream:   #e3d9c2;
-      --brown:   #3a3020;
-      --mid:     #6a6050;
-      --light:   #9a8e78;
+      --ivory:   #fbf8f9;
+      --cream:   #ffffff;
+      --brown:   #3f3937;
+      --mid:     #746d69;
+      --light:   #a69e9a;
       --green:   #c6dad0;
-      --accent:  #8b6914;
+      --accent:  #cf9262;
       --live:    #3a7d44;
       --beta:    #7a5c14;
       --dev:     #5a5a7a;
@@ -30,7 +31,7 @@
     /* ── Header ── */
     header {
       background: var(--cream);
-      border-bottom: 2px solid #d0c8b0;
+      border-bottom: 1px solid #eee7e3;
       padding: 48px 24px 40px;
       text-align: center;
     }
@@ -77,7 +78,7 @@
       color: var(--light);
       margin-bottom: 24px;
       padding-bottom: 8px;
-      border-bottom: 1px solid #d0c8b0;
+      border-bottom: 1px solid #eee7e3;
     }
 
     /* ── App Cards ── */
@@ -85,16 +86,16 @@
 
     .card {
       background: #fff;
-      border: 1px solid #d8d0bc;
+      border: 1px solid #eee7e3;
       border-radius: 16px;
       padding: 24px;
       display: flex;
       gap: 20px;
       align-items: flex-start;
-      box-shadow: 0 2px 8px rgba(58,48,32,0.06);
+      box-shadow: 0 4px 18px rgba(74,55,46,0.06);
       transition: box-shadow 0.2s;
     }
-    .card:hover { box-shadow: 0 4px 16px rgba(58,48,32,0.12); }
+    .card:hover { box-shadow: 0 8px 24px rgba(74,55,46,0.11); }
 
     .card-icon {
       width: 60px; height: 60px;
@@ -134,7 +135,7 @@
     }
     .btn:hover { opacity: 0.8; }
     .btn-play {
-      background: var(--brown); color: var(--ivory);
+      background: var(--accent); color: #fff;
     }
     .btn-disabled {
       background: #e0d8c8; color: var(--light);
@@ -156,7 +157,7 @@
     }
     .bar-fill {
       height: 100%; border-radius: 99px;
-      background: linear-gradient(90deg, var(--accent), #c8a030);
+      background: linear-gradient(90deg, var(--accent), #e7b18a);
     }
     .bar-fill.green {
       background: linear-gradient(90deg, #3a7d44, #5ab870);
@@ -172,7 +173,7 @@
     /* ── Footer ── */
     footer {
       background: var(--cream);
-      border-top: 1px solid #d0c8b0;
+      border-top: 1px solid #eee7e3;
       text-align: center;
       padding: 28px 24px;
       font-size: 12px;
@@ -253,15 +254,19 @@
       <div class="card-body">
         <div class="card-top">
           <h3>SelfieTalk</h3>
-          <span class="badge badge-beta">Internal Test</span>
-          <span class="card-version">v1.0.30</span>
+          <span class="badge badge-live">Live</span>
+          <span class="card-version">v1.0.79</span>
         </div>
         <p class="card-desc">
-          나만의 AI 페르소나와 대화하고, 대화 흐름에 맞춘 셀피형 이미지를 받을 수 있는 AI 채팅 앱.<br>
-          페르소나 카드 UI, 이름별 갤러리, 확대/다운로드, 리텐션·선톡, 장기 기억, 신고/약관, App Check와 광고 보상 구조까지 내부 테스트 기준으로 정리 중.
+          나만의 AI 친구와 대화하고, 대화 흐름에 어울리는 셀카를 받아보는 AI 채팅 앱.<br>
+          다양한 기본 AI 친구와 커스텀 페르소나, 셀카·거울 셀카, 장기 기억, 갤러리, 통합 배터리와 구독 기능을 제공합니다.
         </p>
         <div class="card-actions">
-          <a class="btn btn-disabled">Internal testing</a>
+          <a class="btn btn-play"
+             href="https://play.google.com/store/apps/details?id=com.app.selfietalk"
+             target="_blank" rel="noopener">
+            ▶&nbsp; Google Play
+          </a>
         </div>
       </div>
     </div>
@@ -295,13 +300,12 @@
     <div class="progress-item">
       <div class="progress-top">
         <span>SelfieTalk</span>
-        <span class="progress-pct">92%</span>
+        <span class="progress-pct">100%</span>
       </div>
-      <div class="bar-bg"><div class="bar-fill blue" style="width:92%"></div></div>
+      <div class="bar-bg"><div class="bar-fill green" style="width:100%"></div></div>
       <p class="progress-note">
-        Android 내부 테스트/AAB 출력 가능 · AI 채팅/이미지 생성/갤러리/리텐션/선톡/장기 기억 구현 ·
-        다국어, App Check, 광고 보상, 약관/신고, 스토어 이미지 준비 완료 단계.
-        남은 작업: 구독/고급 기능, iOS 실기기 테스트, 스토어 최종 검수.
+        Google Play 출시 완료 · AI 채팅, 셀카 생성, 기본 AI 친구, 커스텀 페르소나, 구독,
+        통합 배터리, 콘텐츠 신고와 다국어 지원을 제공하고 있습니다.
       </p>
     </div>
 
@@ -309,9 +313,9 @@
 </section>
 
 <footer>
-  <p>© 2025 CGM Style · All rights reserved</p>
+  <p>© 2026 CGM Style · All rights reserved</p>
   <p style="margin-top:6px">
-    <a href="mailto:rmsauddhkdwk@naver.com">rmsauddhkdwk@naver.com</a>
+    <a href="mailto:developercgm@gmail.com">developercgm@gmail.com</a>
   </p>
 </footer>
 
